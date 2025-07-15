@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=sVisualizer
+Exec=/usr/local/bin/sv %f
+Type=Application
+MimeType=image/png;image/jpeg;image/jpg;image/bmp;image/gif;
+Icon=/usr/share/icons/sv.png
+Categories=Graphics;Viewer;

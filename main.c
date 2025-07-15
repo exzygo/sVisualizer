@@ -21,6 +21,9 @@
 #include <SDL_image.h>
 #include <stdio.h>
 
+#define W_HEIGHT 800
+#define W_WIDTH 600
+
 /**
  * @brief Entry point of the application.
  *
@@ -75,8 +78,14 @@ int main(int argc, char* argv[]) {
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
     SDL_FreeSurface(surface); // Free surface after creating texture
 
+    int win_w = W_HEIGHT;
+    int win_h = W_WIDTH;
+
+    float zoom_x = (float)win_w / img_width;
+    float zoom_y = (float)win_h / img_height;
+
     // Initialize zoom and offset settings
-    float zoom = 1.0f;
+    float zoom = zoom_x < zoom_y ? zoom_x : zoom_y;
     int offset_x = 0;
     int offset_y = 0;
     const int scroll_speed = 20;
@@ -121,7 +130,7 @@ int main(int argc, char* argv[]) {
                         offset_y = 0;
                         zoom = 1.0f;
                         break;
-                    case SDLK_x:
+                    case SDLK_x:                        // Exit
                         goto exit;
                         break;
                 }
@@ -129,11 +138,10 @@ int main(int argc, char* argv[]) {
         }
 
         // Background renderer color
-        SDL_SetRenderDrawColor(renderer, 30, 30, 30, 100);
+        SDL_SetRenderDrawColor(renderer, 35, 35, 35, 255);
         SDL_RenderClear(renderer);
 
         // Get current window size
-        int win_w, win_h;
         SDL_GetWindowSize(window, &win_w, &win_h);
 
         // Calculate scaled image size
