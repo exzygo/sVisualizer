@@ -130,7 +130,7 @@ int main(int argc, char* argv[]) {
                         offset_y = 0;
                         zoom = 1.0f;
                         break;
-                    case SDLK_x:                        // Exit
+                    case SDLK_q:                        // Exit
                         goto exit;
                         break;
                 }

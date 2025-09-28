@@ -13,3 +13,8 @@ install:
 	if [ -f "$(ASSETS_TARGET)" ]; then rm -rf "$(ASSETS_TARGET)"; fi
 	cp assets/sv.png /usr/share/icons/
 	cp desktop/sVisualizer.desktop $(LOCAL_APP_DIR)
+
+remove:
+	rm -rf /usr/local/bin/sv
+	rm -rf /usr/share/icons/sv.png
+	rm -rf $(LOCAL_APP_DIR)/desktop/sVisualizer.desktop
